@@ -7,7 +7,7 @@ export const auth = (req: Request, res: Response,next:NextFunction)=>{
     const decoded = jwt.verify(header as string,process.env.JWT_SECRET!)
     if(decoded){
         //@ts-ignore
-        req.userId = docoded._id;
+        req.userId = decoded._id;
         next()
     }
     else{

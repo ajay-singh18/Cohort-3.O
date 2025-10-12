@@ -73,7 +73,7 @@ app.post("/api/v1/signin",async (req, res) => {
         res.status(403).json({message: "Incorrect credentials"})
     }
 });
-app.post("api/v1/content", auth,async (req, res) => {
+app.post("/api/v1/content", auth,async (req, res) => {
     const title = req.body.title;
     const link = req.body.link;
     await contentModel.create({
@@ -83,8 +83,11 @@ app.post("api/v1/content", auth,async (req, res) => {
         userId: req.userId,
         tags: []
     })
+    res.json({
+      message: "content added"
+    })
 });
-app.get("api/v1/content", auth, (req, res) => {
+app.get("/api/v1/content", auth, (req, res) => {
     
 });
 app.delete("api/v1/content", (req, res) => {});

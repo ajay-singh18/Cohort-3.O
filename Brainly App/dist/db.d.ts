@@ -52,8 +52,8 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
-    type?: unknown;
     link?: unknown;
+    title?: unknown;
     userId?: unknown;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     tags: mongoose.Types.DocumentArray<{
@@ -81,8 +81,8 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
-    type?: unknown;
     link?: unknown;
+    title?: unknown;
     userId?: unknown;
 }, {}, mongoose.DefaultSchemaOptions> & {
     tags: mongoose.Types.DocumentArray<{
@@ -110,8 +110,8 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
-    type?: unknown;
     link?: unknown;
+    title?: unknown;
     userId?: unknown;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -128,8 +128,8 @@ declare const contentModel: mongoose.Model<{
         isValid?: {} | null;
     }[];
     userId: string;
-    type?: string | null;
     link?: string | null;
+    title?: string | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     tags: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -141,8 +141,8 @@ declare const contentModel: mongoose.Model<{
         isValid?: {} | null;
     }[];
     userId: string;
-    type?: string | null;
     link?: string | null;
+    title?: string | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
     tags: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -154,8 +154,8 @@ declare const contentModel: mongoose.Model<{
         isValid?: {} | null;
     }[];
     userId: string;
-    type?: string | null;
     link?: string | null;
+    title?: string | null;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

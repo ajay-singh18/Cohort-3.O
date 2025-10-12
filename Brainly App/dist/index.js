@@ -69,18 +69,22 @@ app.post("/api/v1/signin", async (req, res) => {
         res.status(403).json({ message: "Incorrect credentials" });
     }
 });
-app.post("api/v1/content", auth, async (req, res) => {
-    const link = req.body.title;
-    const type = req.body.link;
+app.post("/api/v1/content", auth, async (req, res) => {
+    const title = req.body.title;
+    const link = req.body.link;
     await contentModel.create({
+        title,
         link,
-        type,
         //@ts-ignore
         userId: req.userId,
         tags: []
     });
+    res.json({
+        message: "content added"
+    });
 });
-app.get("api/v1/content", (req, res) => { });
+app.get("/api/v1/content", auth, (req, res) => {
+});
 app.delete("api/v1/content", (req, res) => { });
 app.post("api/v1/brain/share", (req, res) => { });
 app.post("api/v1/brain:shareLink", (req, res) => { });

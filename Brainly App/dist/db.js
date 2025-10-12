@@ -7,8 +7,8 @@ const userSchema = new Schema({
 });
 const userModel = model("User", userSchema);
 const contentSchema = new Schema({
+    title: String,
     link: String,
-    type: String,
     tags: [{ type: mongoose.Types.ObjectId, ref: "Tag" }],
     userId: { type: String, ref: 'User', required: true
     }
