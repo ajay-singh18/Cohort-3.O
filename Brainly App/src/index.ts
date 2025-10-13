@@ -80,7 +80,7 @@ app.post("/api/v1/content", auth,async (req, res) => {
         title,
         link,
         //@ts-ignore
-        userId: req.userId,
+        userId: req.userId, // used ts ignore
         tags: []
     })
     res.json({
