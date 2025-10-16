@@ -6,9 +6,9 @@ import bcrypt from "bcrypt"
 import {contentModel,userModel} from "./db.js";
 import dotenv from "dotenv"
 import { auth } from "./middleware.js";
-dotenv.config();
+dotenv.config(); // dot config
 const app = express();
-const url = process.env.MONGO_URL!
+const url = process.env.MONGO_URL! // mongo url
 const JWT_SECRET = process.env.JWT_SECRET!
 await mongoose.connect(url)
 app.use(express.json());
