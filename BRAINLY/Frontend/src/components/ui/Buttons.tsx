@@ -1,5 +1,5 @@
 
-export interface ButtonProps{
+interface ButtonProps{
     variant: "primary" | "secondary",
     size : "sm" | "md" | "lg",
     text : string,
@@ -13,7 +13,7 @@ import React from 'react'
 const Buttons = (props:ButtonProps) => {
   return (
     <div>
-        <button className='text-{props.size} text-{props.primary}'
+        <button {className=`text-${props.size} `}
         onClick={props.onClick}
         >{props.text}</button>
     </div>
