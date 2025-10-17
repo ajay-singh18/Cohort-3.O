@@ -6,9 +6,9 @@ import bcrypt from "bcrypt";
 import { contentModel, userModel } from "./db.js";
 import dotenv from "dotenv";
 import { auth } from "./middleware.js";
-dotenv.config();
+dotenv.config(); // dot config
 const app = express();
-const url = process.env.MONGO_URL;
+const url = process.env.MONGO_URL; // mongo url
 const JWT_SECRET = process.env.JWT_SECRET;
 await mongoose.connect(url);
 app.use(express.json());
@@ -72,21 +72,41 @@ app.post("/api/v1/signin", async (req, res) => {
 app.post("/api/v1/content", auth, async (req, res) => {
     const title = req.body.title;
     const link = req.body.link;
+    //@ts-ignore
+    console.log(req.userId);
     await contentModel.create({
         title,
         link,
         //@ts-ignore
-        userId: req.userId,
+        userId: req.userId, // used ts ignore
         tags: []
     });
     res.json({
         message: "content added"
     });
 });
-app.get("/api/v1/content", auth, (req, res) => {
+app.get("/api/v1/content", auth, async (req, res) => {
+    //@ts-ignore
+    const userId = req.userId;
+    const content = await contentModel.find({
+        userId
+    }).populate("userId", "username");
+    res.json({
+        content
+    });
 });
-app.delete("api/v1/content", (req, res) => { });
-app.post("api/v1/brain/share", (req, res) => { });
-app.post("api/v1/brain:shareLink", (req, res) => { });
+app.delete("/api/v1/delete", auth, async (req, res) => {
+    const contentId = req.body.contentId;
+    await contentModel.deleteMany({
+        _id: contentId,
+        //@ts-ignore
+        userId: req.userId
+    });
+    res.json({
+        "message": "Content deleted"
+    });
+});
+app.post("/api/v1/brain/share", (req, res) => { });
+app.post("/api/v1/brain:shareLink", (req, res) => { });
 app.listen("3000");
 //# sourceMappingURL=index.js.map

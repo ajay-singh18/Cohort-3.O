@@ -76,6 +76,9 @@ app.post("/api/v1/signin",async (req, res) => {
 app.post("/api/v1/content", auth,async (req, res) => {
     const title = req.body.title;
     const link = req.body.link;
+    //@ts-ignore
+    console.log(req.userId);
+    
     await contentModel.create({
         title,
         link,
@@ -87,10 +90,28 @@ app.post("/api/v1/content", auth,async (req, res) => {
       message: "content added"
     })
 });
-app.get("/api/v1/content", auth, (req, res) => {
-    
+app.get("/api/v1/content", auth, async (req, res) => {
+  //@ts-ignore
+    const userId = req.userId
+    const content = await contentModel.find({
+      userId
+    }).populate("userId","username")
+    res.json({
+      content
+    })
+
 });
-app.delete("api/v1/content", (req, res) => {});
-app.post("api/v1/brain/share", (req, res) => {});
-app.post("api/v1/brain:shareLink", (req, res) => {});
+app.delete("/api/v1/delete",auth,async (req, res) => {
+  const contentId = req.body.contentId
+  await contentModel.deleteMany({
+    _id:contentId,
+    //@ts-ignore
+    userId: req.userId
+  })
+  res.json({
+    "message": "Content deleted"
+  })
+});
+app.post("/api/v1/brain/share", (req, res) => {});
+app.post("/api/v1/brain:shareLink", (req, res) => {});
 app.listen("3000")
