@@ -17,7 +17,7 @@ const sizeStyle={
   "lg": " py-3 px-6"
 }
 const defaultStyle = "rounded-md "
-import React from 'react'   //
+import React from 'react'   // fhjhghjhghgghkg
 
 const Buttons = (props:ButtonProps) => {
   return (
