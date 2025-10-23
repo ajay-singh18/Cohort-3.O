@@ -10,9 +10,15 @@ const contentSchema = new Schema({
     title: String,
     link: String,
     tags: [{ type: mongoose.Types.ObjectId, ref: "Tag" }],
-    userId: { type: String, ref: 'User', required: true
+    userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true
     }
 });
 const contentModel = model("Content", contentSchema);
-export { userModel, contentModel };
+const linkSchema = new Schema({
+    hash: String,
+    userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true, unique: true
+    }
+});
+const linkModel = model("Link", linkSchema);
+export { userModel, contentModel, linkModel };
 //# sourceMappingURL=db.js.map
