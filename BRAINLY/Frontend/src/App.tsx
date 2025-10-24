@@ -1,17 +1,55 @@
-import Buttons from "./components/ui/Buttons"
-import PlusIcon from "./icons/PlusIcon"
-import ShareIcon from "./icons/ShareIcon"
-
+import { useState } from "react";
+import Buttons from "./components/ui/Buttons";
+import { Card } from "./components/ui/Card";
+import { ContentModel } from "./components/ui/ContentModel";
+import PlusIcon from "./icons/PlusIcon";
+import ShareIcon from "./icons/ShareIcon";
+import { Sidebar } from "./components/ui/Sidebar";
 
 function App() {
-
+  const [openModel,setOpenModel] = useState(false);
+const addContentHandler = ()=>{
+  setOpenModel(true);
+}
+const crossHandler = ()=>{
+  setOpenModel(false)
+}
   return (
-    <>
-      <Buttons startIcon={<PlusIcon size={"md"}/>} endIcon={<ShareIcon size = {"md"} />} text = "Hellu" size = "md" variant="primary" onClick={()=>{}} />
-      <Buttons text = "World" size = "lg" variant="secondary" onClick={()=>{}} />
-      <Buttons text = "Hulala" size = "sm" variant="primary" onClick={()=>{}} />
-    </>
-  )
+    <div>
+    <Sidebar/>
+    <div className="p-4 ml-72 bg-gray-200 min-h-screen">
+      <div className="flex justify-end gap-4">
+        <Buttons
+        startIcon={<PlusIcon size={"md"} />}
+        text="Add Content"
+        size="md"
+        variant="primary"
+        onClick={addContentHandler}
+      />
+      <Buttons
+        startIcon={<ShareIcon size={"md"} />}
+        text="Share Brain"
+        size="lg"
+        variant="secondary"
+        onClick={() => {}}
+      /> 
+      </div>
+      <div className="flex gap-2">
+        <Card
+          type="twitter"
+          link="https://twitter.com/26Abhishekyadav/status/1981283963680542891"
+          title="twitter"
+        />
+        <Card
+          type="youtube"
+          link="https://www.youtube.com/watch?v=OEuiB_7iPl4"
+          title="IndvsAus"
+        />
+      </div>
+      <ContentModel open={openModel} onClose={crossHandler} />
+    </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

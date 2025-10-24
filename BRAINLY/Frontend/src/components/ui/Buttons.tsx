@@ -3,9 +3,9 @@ interface ButtonProps{
     variant: "primary" | "secondary",
     size : "sm" | "md" | "lg",
     text : string,
-    startIcon? : any,
+    startIcon? : ReactElement,
     endIcon? : any,
-    onClick : ()=>void
+    onClick? : ()=>void
 }
 const VariantStyle = {
   "primary" : "bg-purple-600 text-white",
@@ -16,18 +16,16 @@ const sizeStyle={
   "md": "py-2 px-4",
   "lg": " py-3 px-6"
 }
-const defaultStyle = "rounded-md "
-import React from 'react'   // fhjhghjhghgghkgfndkfjdslkfjdslfdsfdsfdsf
+const defaultStyle = "rounded-md font-light flex items-center gap-1"
+import { type ReactElement } from 'react'
 
 const Buttons = (props:ButtonProps) => {
-  return (
-    <>
-        <div className='flex'>
+  return ( 
+        <div className='flex' onClick={props.onClick}>
           <button
         className={`${VariantStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size]}  `} 
-        >{props.startIcon} {props.text} {props.endIcon}</button>
+        >{props.startIcon} {props.text}</button>
         </div>
-    </>
   )
 }
 

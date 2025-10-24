@@ -1,4 +1,4 @@
-import React from "react";
+
 import { sizeVariants, type IconProps } from "./index.tsx";
 
 function PlusIcon(props:IconProps) {
