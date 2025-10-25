@@ -7,15 +7,14 @@ import {contentModel,linkModel,userModel} from "./db.js";
 import dotenv from "dotenv"
 import { auth } from "./middleware.js";
 import { random } from "./utils.js";
+import cors from "cors"
 dotenv.config(); // dot config
 const app = express();
 const url = process.env.MONGO_URL! // mongo url
 const JWT_SECRET = process.env.JWT_SECRET!
 await mongoose.connect(url)
 app.use(express.json());
-
-
-
+app.use(cors())
 app.post("/api/v1/signup", async (req, res) => {
   // zod validaton and hash passowrd
   const username = req.body.username;
@@ -77,12 +76,14 @@ app.post("/api/v1/signin",async (req, res) => {
 app.post("/api/v1/content", auth,async (req, res) => {
     const title = req.body.title;
     const link = req.body.link;
+    const type = req.body.type;
     //@ts-ignore
     console.log(req.userId);
     
     await contentModel.create({
         title,
         link,
+        type,
         //@ts-ignore
         userId: req.userId, // used ts ignore
         tags: []
@@ -102,9 +103,9 @@ app.get("/api/v1/content", auth, async (req, res) => {
     })
 
 });
-app.delete("/api/v1/delete",auth,async (req, res) => {
-  const contentId = req.body.contentId
-  await contentModel.deleteMany({
+app.delete("/api/v1/delete/:contentId",auth,async (req, res) => {
+  const contentId = req.params.contentId
+  await contentModel.deleteOne({
     _id:contentId,
     //@ts-ignore
     userId: req.userId

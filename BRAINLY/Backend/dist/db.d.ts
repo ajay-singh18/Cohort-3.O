@@ -52,6 +52,7 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
+    type?: unknown;
     link?: unknown;
     title?: unknown;
     userId?: {
@@ -89,6 +90,7 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
+    type?: unknown;
     link?: unknown;
     title?: unknown;
     userId?: {
@@ -126,6 +128,7 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: any;
         isValid?: any;
     }>;
+    type?: unknown;
     link?: unknown;
     title?: unknown;
     userId?: {
@@ -160,6 +163,7 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     };
+    type?: string | null;
     link?: string | null;
     title?: string | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
@@ -181,6 +185,7 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     };
+    type?: string | null;
     link?: string | null;
     title?: string | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
@@ -202,6 +207,7 @@ declare const contentModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     };
+    type?: string | null;
     link?: string | null;
     title?: string | null;
 }> & {

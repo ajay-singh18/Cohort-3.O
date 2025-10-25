@@ -5,7 +5,8 @@ interface ButtonProps{
     text : string,
     startIcon? : ReactElement,
     endIcon? : any,
-    onClick? : ()=>void
+    onClick? : ()=>void,
+    fullWidth? : true | false
 }
 const VariantStyle = {
   "primary" : "bg-purple-600 text-white",
@@ -23,7 +24,7 @@ const Buttons = (props:ButtonProps) => {
   return ( 
         <div className='flex' onClick={props.onClick}>
           <button
-        className={`${VariantStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size]}  `} 
+        className={`${VariantStyle[props.variant]} ${defaultStyle} ${sizeStyle[props.size]} ${props.fullWidth? " w-full items-center justify-center":""} `} 
         >{props.startIcon} {props.text}</button>
         </div>
   )

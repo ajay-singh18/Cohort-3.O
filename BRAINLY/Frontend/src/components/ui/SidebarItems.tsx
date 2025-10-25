@@ -2,11 +2,11 @@ import type { ReactElement } from "react";
 
 export function SidebarItems({icon,text}:{icon:ReactElement,text:string}){
         return (
-            <div className="flex text-gray-500">
-                <div className="p-2 text-red-500">
+            <div className="flex text-gray-500 gap-1 items-center cursor-pointer hover:bg-gray-200 pl-4 max-w-48 transition-all duration-400">
+                <div>
                     {icon}
                 </div>
-                <div className="p-2">
+                <div>
                     {text}
                 </div>
             </div>
