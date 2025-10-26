@@ -8,7 +8,11 @@ import express from "express";
 //     database:"neondb",
 //     ssl: true
 // })
-const pgClient = new Client("postgresql://neondb_owner:npg_pLtSCYhz86xj@ep-autumn-butterfly-ahb1ae52-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require");
+import dotenv from "dotenv";
+dotenv.config();
+const url = process.env.URL;
+const pgClient = new Client(url);
+console.log(url);
 pgClient.connect();
 const app = express();
 app.use(express.json());
@@ -23,6 +27,9 @@ app.post("/signup", async (req, res) => {
     }
     catch (e) {
         console.log(e);
+        res.json({
+            e
+        });
     }
 });
 app.listen(3000);

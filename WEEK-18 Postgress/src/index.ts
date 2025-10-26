@@ -8,8 +8,12 @@ import express from "express"
 //     database:"neondb",
 //     ssl: true
 // })
+import dotenv from "dotenv"
+dotenv.config();
+const url = process.env.URL;
+const pgClient = new Client(url)
+console.log(url);
 
-const pgClient = new Client("postgresql://neondb_owner:npg_pLtSCYhz86xj@ep-autumn-butterfly-ahb1ae52-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
 
 pgClient.connect();
 const app = express();
