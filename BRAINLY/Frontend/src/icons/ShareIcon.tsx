@@ -1,4 +1,3 @@
-import React from 'react'
 import { sizeVariants } from './index'
 
 function ShareIcon(props) {
