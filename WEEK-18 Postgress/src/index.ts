@@ -8,7 +8,7 @@ import express from "express"
 //     database:"neondb",
 //     ssl: true
 // })
-import dotenv from "dotenv"
+import dotenv from "dotenv" //jhggjbjk
 dotenv.config();
 const url = process.env.URL;
 const pgClient = new Client(url)
