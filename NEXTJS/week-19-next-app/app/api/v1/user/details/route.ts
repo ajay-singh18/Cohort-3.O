@@ -18,4 +18,10 @@ export function PUT(){
         email: "sfksfjklsfjsdklfdjslf"
     })
 }
+export function DELETE(){
+    return NextResponse.json({
+        user:"ajay delete",
+        email: "sfksfjklsfjsdklfdjslf"
+    })
+}
 
