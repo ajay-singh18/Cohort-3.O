@@ -15,6 +15,6 @@ export default async function Blogs({params}:any){
             {data.title}
             <br />
             {data.id}
-        </div>
+        </div> //
     )
 }
